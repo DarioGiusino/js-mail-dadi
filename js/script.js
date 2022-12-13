@@ -43,19 +43,24 @@ clearButton.addEventListener('click', function(){
 
 
 /********************** SECOND EXERCISE ************************/
+// definisco lista e recuper elementi dal dom
 const authEmails = ['dario@primo.it', 'dario@secondo.it', 'dario@terzo.it'];
 const emailField = document.getElementById('exampleInputEmail1');
 const loginButton = document.getElementById('login');
 const loginMessage = document.getElementById('login-message');
 
+// verifica del login al click del button
 loginButton.addEventListener ('click', function(){
+    // recupero valore dell'email inserita
     const userEmail = emailField.value.trim();
 
+    // validazione mail inserita
     if (!userEmail){
         loginMessage.innerText = 'Non hai inserito una mail valida';
         return;
     }
 
+    // giro nella lista di mail autorizzate per verificare se la mail inserita è tra queste con aiuto di variabile di appoggio
     let isAuth = false;
 
     for (let i = 0; i < authEmails.length && !isAuth; i++){
@@ -65,6 +70,7 @@ loginButton.addEventListener ('click', function(){
         }
     }
 
+    // una volta letta la lista, scrivo messaggio a schermo a seconda di quanto riscontrato
     let loginText;
 
     if (isAuth){
