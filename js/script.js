@@ -43,4 +43,40 @@ clearButton.addEventListener('click', function(){
 
 
 /********************** SECOND EXERCISE ************************/
+const authEmails = ['dario@primo.it', 'dario@secondo.it', 'dario@terzo.it'];
+const emailField = document.getElementById('exampleInputEmail1');
+const loginButton = document.getElementById('login');
+const loginMessage = document.getElementById('login-message');
+
+loginButton.addEventListener ('click', function(){
+    const userEmail = emailField.value.trim();
+
+    if (!userEmail){
+        loginMessage.innerText = 'Non hai inserito una mail valida';
+        return;
+    }
+
+    let isAuth = false;
+
+    for (let i = 0; i < authEmails.length && !isAuth; i++){
+        const currentEmail = authEmails[i];
+        if (currentEmail === userEmail){
+            isAuth = true;
+        }
+    }
+
+    let loginText;
+
+    if (isAuth){
+        loginText = 'Puoi accedere al sito, benenuto!'
+    } else {
+        loginText = 'Spiacente, non hai i permessi per accedere.'
+    }
+
+    /* Versione ternario
+    const loginText = isAuth ? 'Puoi accedere al sito, benenuto!' : 'Spiacente, non hai i permessi per accedere.'; */
+
+    loginMessage.innerText = loginText;
+});
+
 
